@@ -80,75 +80,8 @@ void WWg::Loop(TString year,TString name)
 	   btag_weight_medium_c_down = get_btag_scale(hbeff,hceff,hleff,value,nJet,Jet_btagDeepFlavB,Jet_hadronFlavour,Jet_btagSF_deepjet_M,Jet_btagSF_deepjet_M_up,Jet_btagSF_deepjet_M_down,Jet_pt,Jet_eta,"cdown");
 	   btag_weight_medium_light_down = get_btag_scale(hbeff,hceff,hleff,value,nJet,Jet_btagDeepFlavB,Jet_hadronFlavour,Jet_btagSF_deepjet_M,Jet_btagSF_deepjet_M_up,Jet_btagSF_deepjet_M_down,Jet_pt,Jet_eta,"lightdown");
     }
-   /*
-   while ( newb < nJet )  
-        {
-           
-         //cout << "there are :" << nJet <<endl;
-        // cout << "now :" << newb <<endl;
-        // cout << "Btag now: "<<Btag_Weight <<endl;
-        // cout <<" shape SF:" <<Jet_btagSF_deepjet_shape[newb] <<endl;
-        //cout << y << " " << Jet_btagDeepFlavB[newb] << endl;
-        if (y=="16post" && Jet_btagDeepFlavB[newb] >0.2489 && Jet_hadronFlavour[newb]==5)  
-         { pmc1= pmc1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]));
-           pdata1= pdata1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb];
-           pdata1_up= pdata1_up*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb];
-           pdata1_down= pdata1_down*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb];
-         }
-        else if (y=="16post" && Jet_btagDeepFlavB[newb] <0.2489 && Jet_hadronFlavour[newb]==5) 
-         { pmc2= pmc2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb])));
-           pdata2= pdata2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb]);
-           pdata2_up= pdata2_up*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb]);
-           pdata2_down= pdata2_down*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb]);
-         }
-        else if (y=="16pre" && Jet_btagDeepFlavB[newb] <0.2598 && Jet_hadronFlavour[newb]==5) 
-         { pmc2= pmc2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb])));
-           pdata2= pdata2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb]);
-           pdata2_up= pdata2_up*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb]);
-           pdata2_down= pdata2_down*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb]);
-         }
-        else if (y=="16pre" && Jet_btagDeepFlavB[newb] >0.2598 && Jet_hadronFlavour[newb]==5)  
-         { pmc1= pmc1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]));
-           pdata1= pdata1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb];
-           pdata1_up= pdata1_up*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb];
-           pdata1_down= pdata1_down*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb];
-         }
-        else if (y=="17" && Jet_btagDeepFlavB[newb] <0.3040 && Jet_hadronFlavour[newb]==5) 
-         { pmc2= pmc2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb])));
-           pdata2= pdata2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb]);
-           pdata2_up= pdata2_up*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb]);
-           pdata2_down= pdata2_down*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb]);
-         }
-        else if (y=="17" && Jet_btagDeepFlavB[newb] >0.3040 && Jet_hadronFlavour[newb]==5)  
-         { pmc1= pmc1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]));
-           pdata1= pdata1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb];
-           pdata1_up= pdata1_up*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb];
-           pdata1_down= pdata1_down*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb];
-         }
-        else if (y=="18" && Jet_btagDeepFlavB[newb] <0.2783 && Jet_hadronFlavour[newb]==5) 
-         { pmc2= pmc2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb])));
-           pdata2= pdata2*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb]);
-           pdata2_up= pdata2_up*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb]);
-           pdata2_down= pdata2_down*(1.0-hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb]);
-         }
-        else if (y=="18" && Jet_btagDeepFlavB[newb] >0.2783 && Jet_hadronFlavour[newb]==5)  
-         { pmc1= pmc1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]));
-           pdata1= pdata1*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M[newb];
-           pdata1_up= pdata1_up*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_up[newb];
-           pdata1_down= pdata1_down*hbeff->GetBinContent(hbeff->FindBin(Jet_pt[newb],Jet_eta[newb]))*Jet_btagSF_deepjet_M_down[newb];
-         }
-          pmc=pmc1*pmc2;
-          pdata=pdata1*pdata2;
-          pdata_up=pdata1_up*pdata2_up;
-          pdata_down=pdata1_down*pdata2_down;
-
-          //cout << "pmc:" << pmc <<" pdata: "  <<pdata <<endl;
-          newb++;
-          //Btag_Weight = Btag_Weight * Jet_btagSF_deepjet_shape[j] ;
-            }*/
-      //if(isdata) scalef=1;
-      //cout << jentry <<" ::Btag weight B now: " <<pmc/pdata <<endl;
- //     cout << jentry <<" ::Btag weight B now: " <<btag_weight_medium_b <<endl;
+  
+  
      /* 
         cout << "Btag weight B now: "<<btag_weight_medium_b <<" " << btag_weight_medium_light <<endl;
         cout << "Btag weight C now: "<<btag_weight_medium_c <<" " << btag_weight_medium_light <<endl;
